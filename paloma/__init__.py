@@ -135,6 +135,16 @@ class Mail(object):
             message.important = important
 
         # Send the message.
+        self.send_message(message)
+
+    def send_message(self, message):
+        """
+        Send the baked EmailMessage. This allows subclasses to change the
+        actual "sending" behaviour, or to modify the EmailMessage object
+        before sending
+
+        :param message: the baked EmailMessage object, ready for sending
+        """
         message.send()
 
     def attach_file(self,
